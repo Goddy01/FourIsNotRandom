@@ -116,7 +116,7 @@ def gitlab_exposure(
     If installed branch is newer than all listed floors and not otherwise
     covered, PASS. If below min_affected, PASS (not in affected range).
     If above max_affected (closed advisory window), PASS with
-    ``not_in_affected_range`` — confirmed N/A, not "unknown / beyond table".
+    ``not_in_affected_range`` - confirmed N/A, not "unknown / beyond table".
     Without max_affected, versions above the newest listed floor use
     ``newer_than_table`` (PASS, but manually confirm).
     GitLab Dedicated internal builds (suffix contains ``internal``) are treated
@@ -136,7 +136,7 @@ def gitlab_exposure(
         if min_v and _cmp_tuple(installed, min_v) < 0:
             return "PASS", "", "below_affected_range"
 
-    # Closed advisory window (e.g. CVE-2026-97229 only ever hit 19.2–19.4).
+    # Closed advisory window (e.g. CVE-2026-97229 only ever hit 19.2-19.4).
     if max_affected:
         max_v = parse_version(max_affected)
         if max_v and (installed.major, installed.minor) > (max_v.major, max_v.minor):
@@ -155,7 +155,7 @@ def gitlab_exposure(
     # Branch not listed: find highest branch <= installed and use that line's
     # semantics. For older lines without a floor entry under CVE-2026-110264,
     # anything from min_affected until first fixed branch is FAIL if the CVE
-    # lists a catch-all (e.g. 18.11 floor covers 7.0–18.11.x via lowest listed).
+    # lists a catch-all (e.g. 18.11 floor covers 7.0-18.11.x via lowest listed).
     branches = []
     for b, f in fixed_by_branch.items():
         bp = parse_version(b)

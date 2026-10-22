@@ -1,4 +1,4 @@
-"""Explicit-target validation — reject CIDR / range sweeps."""
+"""Explicit-target validation - reject CIDR / range sweeps."""
 
 from __future__ import annotations
 

@@ -5,25 +5,25 @@ from typing import Optional
 
 import typer
 
-from cve_exposure_check import __version__
-from cve_exposure_check.checks import emudhra as emudhra_checks
-from cve_exposure_check.checks import gitlab as gitlab_checks
-from cve_exposure_check.checks import litellm as litellm_checks
-from cve_exposure_check.checks import php as php_checks
-from cve_exposure_check.config_loader import (
+from fourisnotrandom import __version__
+from fourisnotrandom.checks import emudhra as emudhra_checks
+from fourisnotrandom.checks import gitlab as gitlab_checks
+from fourisnotrandom.checks import litellm as litellm_checks
+from fourisnotrandom.checks import php as php_checks
+from fourisnotrandom.config_loader import (
     compromised_hash_set,
     load_compromised_hashes,
     load_fixed_versions,
     update_hashes_file,
 )
-from cve_exposure_check.models import Finding, Status
-from cve_exposure_check.report import emit, exit_code
-from cve_exposure_check.targets import TargetError, assert_not_cidr_or_range, load_targets_file
+from fourisnotrandom.models import Finding, Status
+from fourisnotrandom.report import emit, exit_code
+from fourisnotrandom.targets import TargetError, assert_not_cidr_or_range, load_targets_file
 
 app = typer.Typer(
-    name="cve-exposure-check",
+    name="fourisnotrandom",
     help=(
-        "Detection-only CVE exposure scanner. Read-only fingerprints only — "
+        "Detection-only CVE exposure scanner. Read-only fingerprints only - "
         "no exploit payloads. Run only against systems you own or are authorized to assess."
     ),
     no_args_is_help=True,

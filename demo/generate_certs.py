@@ -47,7 +47,7 @@ def main() -> None:
     fp = hashlib.sha256(der).hexdigest()
 
     hashes = {
-        "source": "demo only — not a real eMudhra cert; used to exercise FAIL matching",
+        "source": "demo only - not a real eMudhra cert; used to exercise FAIL matching",
         "certificates": [
             {
                 "name": "DEMO Intermediate (synthetic)",

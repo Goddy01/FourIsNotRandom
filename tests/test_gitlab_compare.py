@@ -1,4 +1,4 @@
-from cve_exposure_check.versioning import gitlab_exposure
+from fourisnotrandom.versioning import gitlab_exposure
 
 CVE_110264 = {
     "18.11": "18.11.13",
@@ -40,7 +40,7 @@ def test_97229_below_affected_range_passes():
 
 
 def test_97229_above_closed_window_not_in_affected_range():
-    # 19.5+ / 20.x are confirmed outside the 19.2–19.4 window — not "beyond table".
+    # 19.5+ / 20.x are confirmed outside the 19.2-19.4 window - not "beyond table".
     for ver in ("19.5.0", "19.5.1", "20.0.0"):
         status, _, reason = gitlab_exposure(
             ver, CVE_97229, min_affected="19.2", max_affected="19.4"
@@ -62,7 +62,7 @@ def test_ancient_no_backport():
 
 
 def test_future_beyond_table_110264_only():
-    # 110264 has no max_affected — 20.0.0 is genuinely beyond the known floor table.
+    # 110264 has no max_affected - 20.0.0 is genuinely beyond the known floor table.
     status, _, reason = gitlab_exposure("20.0.0", CVE_110264, min_affected="7.0")
     assert status == "PASS"
     assert reason == "newer_than_table"

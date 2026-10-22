@@ -1,7 +1,7 @@
 {
   "source": "Cisco Talos 'Compromised eMudhra intermediate certificates' (2026-10-21), citing Mozilla Bugzilla 2083449",
   "hash_type_note": "Published as certificate SHA-256 fingerprints. Scanner matches either full-cert SHA-256 or SPKI SHA-256 against this set so SPKI-based refreshes (e.g. Go crypto/x509) also work.",
-  "todo": "Refresh via `cve-exposure-check update-hashes --from PATH` or replace this file when OneCRL / vendor blocklists update.",
+  "todo": "Refresh via `fourisnotrandom update-hashes --from PATH` or replace this file when OneCRL / vendor blocklists update.",
   "certificates": [
     {
       "name": "EM EV TLS CA - G3B (eMudhra BV)",

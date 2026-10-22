@@ -11,13 +11,13 @@ php:
     "8.3": "8.3.36"
     "8.4": "8.4.27"
     "8.5": "8.5.12"
-  # PHP 8.1 and earlier: no upstream fix — flag as must-upgrade-major.
+  # PHP 8.1 and earlier: no upstream fix - flag as must-upgrade-major.
   unsupported_major_at_or_below: "8.1"
   remediation_fixed: "Upgrade PHP to the fixed version for your branch (or newer)."
   remediation_eol: "No fix available, major upgrade required (PHP 8.1 and earlier have no upstream patch)."
 
 gitlab:
-  # Two separate CVSS 10.0 regex RCEs — evaluate independently.
+  # Two separate CVSS 10.0 regex RCEs - evaluate independently.
   cves:
     CVE-2026-110264:
       # Oct 21 2026 critical patch
@@ -36,9 +36,9 @@ gitlab:
       remediation_no_backport: "No backport available for this branch, full upgrade required."
       remediation_beyond_table: "Beyond the known fixed-version table for CVE-2026-110264; manually confirm against GitLab's current advisory."
     CVE-2026-97229:
-      # Oct 12 2026 critical patch — easy to conflate with 110264
+      # Oct 12 2026 critical patch - easy to conflate with 110264
       description: "Unauthenticated RCE via CI/CD regex compiler (Oct 12 patch)."
-      # Closed window: only 19.2–19.4 were affected. 19.5+ is confirmed N/A
+      # Closed window: only 19.2-19.4 were affected. 19.5+ is confirmed N/A
       # (not_in_affected_range), not "beyond known data".
       min_affected: "19.2"
       max_affected: "19.4"
@@ -62,14 +62,14 @@ go:
 certifi:
   # First release that blocks compromised eMudhra roots.
   # 2026.10.19 restores some legitimate emSign roots over-removed in 10.18
-  # (stability / false-positive fix) — NOT a security floor.
+  # (stability / false-positive fix) - NOT a security floor.
   min_safe: "2026.10.18"
   note: "2026.10.19 also restores roots incorrectly dropped in 10.18 (stability); 10.18 remains the security floor."
   remediation: "Upgrade certifi to 2026.10.18 or newer (prefer 2026.10.19+ for restored legitimate roots)."
-  remediation_restored: "PASS — also restores roots incorrectly dropped in 10.18 (stability follow-up; 10.18 remains the security floor)."
+  remediation_restored: "PASS - also restores roots incorrectly dropped in 10.18 (stability follow-up; 10.18 remains the security floor)."
 
 litellm:
-  # Exact compromised release only — do not flag other versions as this incident.
+  # Exact compromised release only - do not flag other versions as this incident.
   compromised_version: "1.107.0"
   safe_pin_example: "1.106.2"
   remediation: "Known-malicious release, rotate credentials immediately. Remove litellm==1.107.0 and leftover cook.pth/cook.py/sitecustomize.py; pin to a safe version (e.g. 1.106.2)."

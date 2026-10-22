@@ -14,10 +14,10 @@ from cryptography import x509
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 from cryptography.hazmat.primitives.serialization.pkcs12 import load_key_and_certificates
 
-from cve_exposure_check.config_loader import compromised_hash_set, load_fixed_versions
-from cve_exposure_check.models import Finding, Status
-from cve_exposure_check.targets import assert_not_cidr_or_range
-from cve_exposure_check.versioning import (
+from fourisnotrandom.config_loader import compromised_hash_set, load_fixed_versions
+from fourisnotrandom.models import Finding, Status
+from fourisnotrandom.targets import assert_not_cidr_or_range
+from fourisnotrandom.versioning import (
     any_hash_match,
     certifi_exposure,
     go_exposure,
@@ -517,7 +517,7 @@ def evaluate_certifi_version(
         if version.strip() == "2026.10.19" or version.strip().startswith("2026.10.19"):
             rem = cert_cfg.get(
                 "remediation_restored",
-                "PASS — also restores roots incorrectly dropped in 10.18.",
+                "PASS - also restores roots incorrectly dropped in 10.18.",
             )
         else:
             rem = "No action required." + (f" ({note})" if note else "")

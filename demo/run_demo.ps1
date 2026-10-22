@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
 Set-Location $Root
 
-$Cli = Join-Path $Root ".venv\Scripts\cve-exposure-check.exe"
+$Cli = Join-Path $Root ".venv\Scripts\fourisnotrandom.exe"
 if (-not (Test-Path $Cli)) {
     Write-Host "Creating venv and installing package..."
     python -m venv .venv

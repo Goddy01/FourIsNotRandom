@@ -3,13 +3,13 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cve-exposure-check"
+name = "fourisnotrandom"
 version = "0.1.0"
 description = "Detection-only CLI that fingerprints versions/config for known CVE exposure (no exploit payloads)."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-authors = [{ name = "cve-exposure-check contributors" }]
+authors = [{ name = "FourIsNotRandom" }]
 keywords = ["cve", "security", "fingerprint", "detection-only"]
 dependencies = [
   "typer>=0.12",
@@ -24,13 +24,13 @@ dependencies = [
 dev = ["pytest>=8"]
 
 [project.scripts]
-cve-exposure-check = "cve_exposure_check.cli:app"
+fourisnotrandom = "fourisnotrandom.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-cve_exposure_check = ["data/*.yaml", "data/*.json"]
+fourisnotrandom = ["data/*.yaml", "data/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

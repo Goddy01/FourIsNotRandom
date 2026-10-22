@@ -1,6 +1,6 @@
 import pytest
 
-from cve_exposure_check.targets import TargetError, assert_not_cidr_or_range
+from fourisnotrandom.targets import TargetError, assert_not_cidr_or_range
 
 
 def test_rejects_cidr():

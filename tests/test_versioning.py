@@ -1,4 +1,4 @@
-from cve_exposure_check.versioning import (
+from fourisnotrandom.versioning import (
     any_hash_match,
     certifi_exposure,
     extract_php_version_from_banner,

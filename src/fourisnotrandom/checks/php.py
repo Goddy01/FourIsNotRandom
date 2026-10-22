@@ -10,11 +10,11 @@ from urllib.parse import urljoin
 import requests
 import yaml
 
-from cve_exposure_check.checks.apps import detect_php_apps
-from cve_exposure_check.config_loader import load_fixed_versions
-from cve_exposure_check.models import Finding, Status
-from cve_exposure_check.targets import assert_not_cidr_or_range
-from cve_exposure_check.versioning import (
+from fourisnotrandom.checks.apps import detect_php_apps
+from fourisnotrandom.config_loader import load_fixed_versions
+from fourisnotrandom.models import Finding, Status
+from fourisnotrandom.targets import assert_not_cidr_or_range
+from fourisnotrandom.versioning import (
     extract_php_version_from_banner,
     parse_version,
     php_exposure,
@@ -156,7 +156,7 @@ def check_local(php_bin: str = "php", config: dict[str, Any] | None = None) -> l
                         target=php_bin,
                         installed=f"{version} SAPI={label}",
                         fixed=finding.fixed,
-                        remediation=f"High-risk SAPI {label} on vulnerable PHP — upgrade PHP immediately.",
+                        remediation=f"High-risk SAPI {label} on vulnerable PHP - upgrade PHP immediately.",
                         detail="high_risk_sapi",
                     )
                 )
@@ -179,7 +179,7 @@ def check_local(php_bin: str = "php", config: dict[str, Any] | None = None) -> l
                 installed=f"session.upload_progress.enabled={'On' if enabled else 'Off'}",
                 fixed="Off (compensating control only; not a complete fix)",
                 remediation=(
-                    "session.upload_progress.enabled is On on vulnerable PHP — upgrade PHP; do not rely on toggling this alone."
+                    "session.upload_progress.enabled is On on vulnerable PHP - upgrade PHP; do not rely on toggling this alone."
                     if enabled and finding.status == Status.FAIL
                     else (
                         "upload_progress disabled (compensating only)."
@@ -219,7 +219,7 @@ def check_remote(
                 t,
                 timeout=timeout,
                 allow_redirects=True,
-                headers={"User-Agent": "cve-exposure-check/0.1 (detection-only)"},
+                headers={"User-Agent": "FourIsNotRandom/0.1 (detection-only)"},
             )
             for k, v in resp.headers.items():
                 headers_blob += f"{k}: {v}\n"

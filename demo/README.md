@@ -1,6 +1,6 @@
 # Local audit demo targets
 
-Synthetic fixtures so you can exercise `cve-exposure-check` without scanning production.
+Synthetic fixtures so you can exercise `fourisnotrandom` without scanning production.
 
 ## Quick run (filesystem / pins / certs)
 
@@ -25,21 +25,21 @@ Terminal B:
 Or one-off:
 
 ```powershell
-cve-exposure-check php url http://127.0.0.1:8765/
-cve-exposure-check php url http://127.0.0.1:8765/patched
-cve-exposure-check gitlab --url http://127.0.0.1:8765
+fourisnotrandom php url http://127.0.0.1:8765/
+fourisnotrandom php url http://127.0.0.1:8765/patched
+fourisnotrandom gitlab --url http://127.0.0.1:8765
 ```
 
 ## What each fixture shows
 
 | Path | Expected |
 |------|----------|
-| `vulnerable-php/` | FAIL — PHP 8.3.35 / 8.2.34 pins |
-| `patched-php/` | PASS — PHP 8.3.36 |
+| `vulnerable-php/` | FAIL - PHP 8.3.35 / 8.2.34 pins |
+| `patched-php/` | PASS - PHP 8.3.36 |
 | `webroot/` | FAIL PHP 8.4.26 + WordPress detected |
-| `litellm-bad/` | FAIL — `litellm==1.107.0` |
-| `litellm-ok/` | PASS — `1.106.2` |
-| `certs/demo-bad.pem` + `demo-hashes.json` | FAIL — synthetic hash match |
+| `litellm-bad/` | FAIL - `litellm==1.107.0` |
+| `litellm-ok/` | PASS - `1.106.2` |
+| `certs/demo-bad.pem` + `demo-hashes.json` | FAIL - synthetic hash match |
 | `certs/demo-clean.pem` | PASS against demo hashes |
 | mock `/` | FAIL PHP 8.3.35 header |
 | mock `/patched` | PASS PHP 8.3.36 header |

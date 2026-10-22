@@ -6,9 +6,9 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.x509.oid import NameOID
 
-from cve_exposure_check.checks.emudhra import cert_digests, scan_certificates
-from cve_exposure_check.models import Status
-from cve_exposure_check.versioning import any_hash_match
+from fourisnotrandom.checks.emudhra import cert_digests, scan_certificates
+from fourisnotrandom.models import Status
+from fourisnotrandom.versioning import any_hash_match
 
 
 def _self_signed() -> x509.Certificate:

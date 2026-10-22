@@ -11,14 +11,14 @@ from pathlib import Path
 
 import pytest
 
-from cve_exposure_check.checks import emudhra as emudhra_checks
-from cve_exposure_check.checks import gitlab as gitlab_checks
-from cve_exposure_check.checks import litellm as litellm_checks
-from cve_exposure_check.checks import php as php_checks
-from cve_exposure_check.config_loader import compromised_hash_set, load_fixed_versions
-from cve_exposure_check.models import Status
-from cve_exposure_check.targets import TargetError, assert_not_cidr_or_range
-from cve_exposure_check.versioning import gitlab_exposure, php_exposure
+from fourisnotrandom.checks import emudhra as emudhra_checks
+from fourisnotrandom.checks import gitlab as gitlab_checks
+from fourisnotrandom.checks import litellm as litellm_checks
+from fourisnotrandom.checks import php as php_checks
+from fourisnotrandom.config_loader import compromised_hash_set, load_fixed_versions
+from fourisnotrandom.models import Status
+from fourisnotrandom.targets import TargetError, assert_not_cidr_or_range
+from fourisnotrandom.versioning import gitlab_exposure, php_exposure
 
 
 FIXED = load_fixed_versions()
@@ -110,7 +110,7 @@ def test_item3_composer_lock_detection(tmp_path: Path):
         ("19.3.5-internal0", "CVE-2026-110264", "PASS", "dedicated_internal_build"),
         ("7.14.2", "CVE-2026-110264", "FAIL", "no_backport"),
         ("20.0.0", "CVE-2026-110264", "PASS", "newer_than_table"),
-        # 97229 closed window — 19.5+/20.x are confirmed N/A, not beyond-table.
+        # 97229 closed window - 19.5+/20.x are confirmed N/A, not beyond-table.
         ("19.5.0", "CVE-2026-97229", "PASS", "not_in_affected_range"),
         ("20.0.0", "CVE-2026-97229", "PASS", "not_in_affected_range"),
         ("19.4.2", "CVE-2026-97229", "PASS", "at_or_above_fixed"),
@@ -154,7 +154,7 @@ def test_item5_oct12_vs_oct21_gap():
     assert by_cve["CVE-2026-110264"].status == Status.FAIL
 
 
-# --- Items 6–8: eMudhra hash matching ---
+# --- Items 6-8: eMudhra hash matching ---
 
 
 def test_item6_dual_digest_match_types(tmp_path: Path):
@@ -258,7 +258,7 @@ def test_item8_hashes_override(tmp_path: Path):
     assert any(f.status == Status.FAIL for f in findings)
 
 
-# --- Items 9–10: LiteLLM ---
+# --- Items 9-10: LiteLLM ---
 
 
 def test_item9_litellm_malicious_pin(tmp_path: Path):

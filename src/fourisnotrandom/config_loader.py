@@ -9,7 +9,7 @@ from typing import Any
 import yaml
 
 
-DATA_PACKAGE = "cve_exposure_check.data"
+DATA_PACKAGE = "fourisnotrandom.data"
 
 
 def _read_pkg_text(name: str) -> str:

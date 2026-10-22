@@ -1,4 +1,4 @@
-from cve_exposure_check.versioning import php_exposure
+from fourisnotrandom.versioning import php_exposure
 
 FIXED = {
     "8.2": "8.2.35",

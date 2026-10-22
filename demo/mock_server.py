@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local mock targets for cve-exposure-check demos (no exploits).
+"""Local mock targets for fourisnotrandom demos (no exploits).
 
 Serves:
   GET /              -> X-Powered-By: PHP/8.3.35  (vulnerable banner)
@@ -10,8 +10,8 @@ Serves:
 Usage:
   python demo/mock_server.py
   # then in another shell:
-  cve-exposure-check php url http://127.0.0.1:8765/
-  cve-exposure-check gitlab --url http://127.0.0.1:8765
+  fourisnotrandom php url http://127.0.0.1:8765/
+  fourisnotrandom gitlab --url http://127.0.0.1:8765
 """
 
 from __future__ import annotations

@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from cve_exposure_check.checks.litellm import check_path
-from cve_exposure_check.models import Status
-from cve_exposure_check.versioning import litellm_is_compromised
+from fourisnotrandom.checks.litellm import check_path
+from fourisnotrandom.models import Status
+from fourisnotrandom.versioning import litellm_is_compromised
 
 
 def test_exact_compromised_only():

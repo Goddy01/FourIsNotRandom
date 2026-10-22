@@ -7,12 +7,12 @@ from typing import Iterable, Sequence, TextIO
 from rich.console import Console
 from rich.table import Table
 
-from cve_exposure_check.models import Finding, Status
+from fourisnotrandom.models import Finding, Status
 
 
 def emit_table(findings: Sequence[Finding], file: TextIO | None = None) -> None:
     console = Console(file=file or sys.stdout)
-    table = Table(title="CVE Exposure Check")
+    table = Table(title="FourIsNotRandom")
     table.add_column("Status", style="bold")
     table.add_column("CVE")
     table.add_column("Target")

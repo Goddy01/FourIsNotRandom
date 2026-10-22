@@ -6,10 +6,10 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 
-from cve_exposure_check.config_loader import load_fixed_versions
-from cve_exposure_check.models import Finding, Status
-from cve_exposure_check.targets import assert_not_cidr_or_range
-from cve_exposure_check.versioning import gitlab_exposure, parse_version
+from fourisnotrandom.config_loader import load_fixed_versions
+from fourisnotrandom.models import Finding, Status
+from fourisnotrandom.targets import assert_not_cidr_or_range
+from fourisnotrandom.versioning import gitlab_exposure, parse_version
 
 
 def _base_url(url: str) -> str:
@@ -25,8 +25,8 @@ def discover_version(base: str, timeout: float = 15.0) -> tuple[str | None, str,
 
     Returns (version, source_url, detection_method).
     """
-    headers = {"User-Agent": "cve-exposure-check/0.1 (detection-only)"}
-    # Prefer version API — preserve full string (e.g. 19.3.5-internal0).
+    headers = {"User-Agent": "FourIsNotRandom/0.1 (detection-only)"}
+    # Prefer version API - preserve full string (e.g. 19.3.5-internal0).
     api = urljoin(base + "/", "api/v4/version")
     try:
         resp = requests.get(api, timeout=timeout, headers=headers)
@@ -45,7 +45,7 @@ def discover_version(base: str, timeout: float = 15.0) -> tuple[str | None, str,
     try:
         resp = requests.get(help_url, timeout=timeout, headers=headers)
         text = resp.text or ""
-        # Common patterns on /help — allow Dedicated internal suffixes.
+        # Common patterns on /help - allow Dedicated internal suffixes.
         patterns = [
             r"GitLab\s+(?:Community|Enterprise)\s+Edition\s+[vV]?(?P<v>\d+\.\d+\.\d+(?:[-._][A-Za-z0-9.+]+)?)",
             r"data-version=\"(?P<v>\d+\.\d+\.\d+(?:[-._][A-Za-z0-9.+]+)?)\"",
@@ -70,7 +70,7 @@ def _remediation_for(status_s: str, reason: str, meta: dict[str, Any]) -> str:
         if reason == "not_in_affected_range":
             return "No action required for this CVE (outside the affected version range)."
         if reason == "dedicated_internal_build":
-            return "GitLab Dedicated internal build — treated as already patched per GitLab advisory notes."
+            return "GitLab Dedicated internal build - treated as already patched per GitLab advisory notes."
         return "No action required for this CVE."
     if status_s == "UNKNOWN":
         return "Unable to map GitLab version to advisory floors; verify manually."

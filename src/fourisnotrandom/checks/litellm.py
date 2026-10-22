@@ -6,9 +6,9 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from cve_exposure_check.config_loader import load_fixed_versions
-from cve_exposure_check.models import Finding, Status
-from cve_exposure_check.versioning import litellm_is_compromised
+from fourisnotrandom.config_loader import load_fixed_versions
+from fourisnotrandom.models import Finding, Status
+from fourisnotrandom.versioning import litellm_is_compromised
 
 REQ_RE = re.compile(
     r"^\s*litellm\s*(?:==|===|@)\s*[\"']?(?P<v>[\d.]+(?:[a-zA-Z0-9._-]*)?)[\"']?",

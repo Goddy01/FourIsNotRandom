@@ -4,8 +4,8 @@ import re
 from pathlib import Path
 from typing import Any
 
-from cve_exposure_check.config_loader import load_php_apps
-from cve_exposure_check.models import Finding, Status
+from fourisnotrandom.config_loader import load_php_apps
+from fourisnotrandom.models import Finding, Status
 
 
 def detect_php_apps(
@@ -64,7 +64,7 @@ def detect_php_apps(
             )
         else:
             status = Status.UNKNOWN
-            remediation = f"{name} detected; PHP version not determined — run a PHP check."
+            remediation = f"{name} detected; PHP version not determined - run a PHP check."
 
         findings.append(
             Finding(
