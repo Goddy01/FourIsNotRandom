@@ -1,0 +1,3 @@
+# Fixture for LiteLLM exact-pin detection
+litellm==1.107.0
+requests>=2.31

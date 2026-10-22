@@ -1,0 +1,42 @@
+# Filesystem fingerprints for common PHP application stacks.
+# Detection is path/file presence only (read-only).
+
+apps:
+  - name: WordPress
+    markers:
+      - path: wp-includes/version.php
+        pattern: "\\$wp_version\\s*=\\s*'([^']+)'"
+  - name: Drupal
+    markers:
+      - path: core/lib/Drupal.php
+      - path: includes/bootstrap.inc
+  - name: Joomla
+    markers:
+      - path: libraries/src/Version.php
+      - path: libraries/cms/version/version.php
+  - name: Magento
+    markers:
+      - path: app/etc/env.php
+      - path: app/Mage.php
+  - name: Laravel
+    markers:
+      - path: artisan
+      - path: vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+  - name: MediaWiki
+    markers:
+      - path: includes/Defines.php
+      - path: includes/DefaultSettings.php
+  - name: Roundcube
+    markers:
+      - path: program/include/iniset.php
+      - path: index.php
+        contains: "ROUNDCUBE"
+  - name: phpMyAdmin
+    markers:
+      - path: libraries/classes/Version.php
+      - path: libraries/Config.php
+  - name: Nextcloud
+    markers:
+      - path: version.php
+        pattern: "OC_Version\\s*=\\s*array\\(([^)]+)\\)"
+      - path: status.php

@@ -1,0 +1,5 @@
+services:
+  app:
+    image: php:8.2.34-apache
+    ports:
+      - "8080:80"

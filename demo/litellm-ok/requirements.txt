@@ -1,0 +1,3 @@
+# Safe pin — should PASS
+litellm==1.106.2
+openai>=1.0

@@ -1,0 +1,11 @@
+{
+  "source": "demo only \u2014 not a real eMudhra cert; used to exercise FAIL matching",
+  "certificates": [
+    {
+      "name": "DEMO Intermediate (synthetic)",
+      "ccadb": "DEMO",
+      "issuer": "demo",
+      "sha256": "a7a434b99efed7d2675d5bb0ecf23db7574665a602cd738a6aeffc6d890fb917"
+    }
+  ]
+}
